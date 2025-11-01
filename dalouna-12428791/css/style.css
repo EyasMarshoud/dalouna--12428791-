@@ -1,10 +1,3 @@
-/*
- css/style.css
- Student Name: Eyas Marshoud
- Student Id: 12428791
-*/
-
-/* CSS Variables */
 :root {
     --bg: #faf7f2;
     --text: hwb(0 12% 88%);
@@ -15,7 +8,6 @@
     --border: #e9e3db;
 }
 
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -30,7 +22,6 @@ body {
     line-height: 1.6;
 }
 
-/* Header & Navigation - Using Flexbox */
 .site-header {
     background: var(--card);
     border-bottom: 1px solid var(--border);
@@ -71,21 +62,29 @@ body {
     transition: color 0.3s ease;
 }
 
-/* Hover and Focus States for Navigation */
 .main-nav a:hover,
 .main-nav a:focus {
     color: var(--brand);
 }
 
-/* Hero Section */
 .hero {
-    background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&h=600&fit=crop');
-    background-size: cover;
-    background-position: center;
     color: white;
     padding: 8rem 2rem;
     text-align: center;
     position: relative;
+    overflow: hidden;
+    min-height: 500px;
+    background: #000;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
 .hero::before {
@@ -96,13 +95,14 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero-badge {
@@ -138,20 +138,18 @@ body {
     color: white;
     padding: 0.9rem 2.5rem;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 50px;
     font-weight: 500;
     font-size: 1rem;
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* Hover and Focus States for CTA Button */
 .cta-button:hover,
 .cta-button:focus {
     background: var(--brand-2);
     transform: translateY(-2px);
 }
 
-/* Section Styling */
 section {
     padding: 5rem 2rem;
     max-width: 1400px;
@@ -165,7 +163,6 @@ section h2 {
     font-weight: 600;
 }
 
-/* About Section - Using Flexbox */
 #about {
     background: var(--bg);
 }
@@ -222,7 +219,6 @@ section h2 {
     font-weight: 400;
 }
 
-/* Menu Section - Using Flexbox */
 #menu {
     background: var(--bg);
 }
@@ -289,7 +285,6 @@ section h2 {
     font-style: italic;
 }
 
-/* Hours Section - Using Flexbox */
 #hours {
     background: var(--bg);
 }
@@ -361,7 +356,6 @@ section h2 {
     color: var(--muted);
 }
 
-/* Find Us Section - Using Flexbox */
 #find-us {
     background: var(--bg);
 }
@@ -370,6 +364,7 @@ section h2 {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .find-us-info {
@@ -377,61 +372,44 @@ section h2 {
     min-width: 300px;
     background: var(--card);
     padding: 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
+}
+
+.find-us-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
 .address {
-    font-size: 1rem;
+    font-size: 1.1rem; 
     color: var(--text);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     font-weight: 500;
 }
 
 .parking {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--muted);
 }
 
-.map-placeholder {
+.map-container {
     flex: 1;
     min-width: 300px;
-    height: 300px;
-    background: var(--card);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    background-image: 
-        linear-gradient(rgba(225, 225, 225, 0.5) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(225, 225, 225, 0.5) 1px, transparent 1px);
-    background-size: 20px 20px;
-    position: relative;
+    height: 300px; 
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden; 
 }
 
-.map-marker {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background: #e74c3c;
-    border-radius: 50% 50% 50% 0;
-    transform: translate(-50%, -50%) rotate(-45deg);
+.actual-map {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
 }
 
-.map-marker::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 14px;
-    height: 14px;
-    background: white;
-    border-radius: 50%;
-}
-
-/* Footer - Using Flexbox */
 .site-footer {
     background: var(--text);
     color: var(--bg);
@@ -458,13 +436,7 @@ section h2 {
     text-decoration: underline;
 }
 
-.back-to-top {
-    color: var(--brand-2);
-    text-decoration: none;
-    font-weight: 500;
-}
 
-/* Responsive Design for Mobile (≤768px) */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
@@ -513,7 +485,6 @@ section h2 {
     }
 }
 
-/* Responsive Design for Desktop (≥1024px) */
 @media (min-width: 1024px) {
     .hero h1 {
         font-size: 4rem;
